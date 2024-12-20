@@ -1,0 +1,16 @@
+export const routesUrl = {
+  signIn: "/auth/signin",
+  signUp: "/auth/signupform",
+  admin:'/form',
+  test:'/form/test1',
+  test2:'/form/testpage2',
+  Checkbox:'/form/checkbox',
+  RadioButton:'/form/radioButton',
+  TextField:'/form/textField',
+  SelectField:'/form/selectInputField',
+  DatePicker:'/form/datePicker',
+  Modal:'/form/modal',
+  Skeleton:'/form/skeleton',
+Button:"/others/button",
+Typography:"/others/typography",
+};
