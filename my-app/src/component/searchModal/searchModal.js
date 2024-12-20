@@ -75,8 +75,8 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
     } else if (item.parentIndex !== undefined) {
       onSearchSelect(item.parentIndex, item.subIndex);
     }
-  
-    // handleClose(); 
+
+    handleClose(); 
   };
   
 
