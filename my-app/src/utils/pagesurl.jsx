@@ -11,6 +11,6 @@ export const routesUrl = {
   DatePicker:'/form/datePicker',
   Modal:'/form/modal',
   Skeleton:'/form/skeleton',
-Button:"/others/button",
-Typography:"/others/typography",
+Button:"/form/others/button",
+Typography:"/form/others/typography",
 };

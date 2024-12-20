@@ -69,32 +69,37 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
 
   const handleSelect = (item) => {
     if (item.href) {
+      onSearchSelect(item.parentIndex, item.subIndex);
+  
       router.push(item.href);
-    }
-    if (item.parentIndex !== undefined) {
+    } else if (item.parentIndex !== undefined) {
       onSearchSelect(item.parentIndex, item.subIndex);
     }
+  
+    // handleClose(); 
   };
+  
 
   const handleKeyDown = useCallback(
     (event) => {
       if (filteredData.length === 0) return;
-
+  
       if (event.key === "ArrowDown") {
         setSelectedIndex((prevIndex) =>
-          prevIndex < filteredData.length - 1 ? prevIndex + 1 : prevIndex
+          prevIndex < filteredData.length - 1 ? prevIndex + 1 : 0 // Wrap to start
         );
       } else if (event.key === "ArrowUp") {
         setSelectedIndex((prevIndex) =>
-          prevIndex > 0 ? prevIndex - 1 : prevIndex
+          prevIndex > 0 ? prevIndex - 1 : filteredData.length - 1 // Wrap to end
         );
       } else if (event.key === "Enter" && selectedIndex !== -1) {
-        handleSelect(filteredData[selectedIndex]);
+        handleSelect(filteredData[selectedIndex]); // Select item and close modal
       }
-
     },
     [filteredData, selectedIndex]
   );
+  
+  
 
   const onSubmit = (data) => {
     if (data.search) {
@@ -107,6 +112,7 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
       }
     }
     handleClose();
+
   };
 
   useEffect(() => {
@@ -140,11 +146,18 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
               {filteredData.map((item, index) => (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
-                    onClick={() => handleSelect(item)}
-                    selected={index === selectedIndex}
-                  >
-                    {highlightText(item.label, searchText)}
-                  </ListItemButton>
+  onClick={() => handleSelect(item)}
+  selected={index === selectedIndex}
+  sx={{
+    backgroundColor: index === selectedIndex ? "rgba(0, 123, 255, 0.1)" : "transparent",
+    "&:hover": {
+      backgroundColor: "rgba(0, 123, 255, 0.2)",
+    },
+  }}
+>
+  {highlightText(item.label, searchText)}
+</ListItemButton>
+
                 </ListItem>
               ))}
             </List>

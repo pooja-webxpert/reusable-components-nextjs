@@ -168,6 +168,30 @@ main.MuiBox-root.css-7ybbiq {
   color: #027ad1 !important;
 }
 
+.css-90rz7s-MuiPaper-root-MuiCard-root {
+  width: 50%!important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 1400px) {
   .css-o2za6n-MuiTypography-root {
     font-size: 2.75rem !important;
@@ -183,3 +207,4 @@ main.MuiBox-root.css-7ybbiq {
     line-height: 1.75rem;
   }
 }
+

@@ -14,7 +14,6 @@ export default function Home() {
   const { control } = useForm();
   return (
     <>
-      {/* <Container> */}
         <div className="!m-10 flex gap-10 justify-between !items-center">
           <div className="w-2/5">
             <Typography className="!font-bold !w-full" variant="h2">
@@ -64,7 +63,6 @@ export default function Home() {
             </Card>
           </div>
         </div>
-      {/* </Container> */}
     </>
   );
 }

@@ -68,13 +68,12 @@ const ButtonPage = () => {
         outlined.
       </Typography>
 
-      <div className="flex gap-9 !mt-10">
-        <BasicButton control={control} name="button1"  label="Contained"  />
+      <div className="flex gap-4 !mt-10">
         <BasicButton control={control} name="button2"  label="Link" href="#"/>  
         <BasicButton control={control} name="button6"  label="Secondary" color="secondary"/>
         <BasicButton control={control} name="button3"  label="Dark" color="dark" variant="contained"/>
         <BasicButton control={control} name="button4"  label="Error" variant="outlined" color="error" />
-        <BasicButton control={control} name="button5"  label="Success" variant="contained" color="success"/>
+        {/* <BasicButton className="!w-28" control={control} name="button5"  label="Success" variant="contained" color="success"/> */}
         <BasicButton control={control} name="button7"  label="Delete" variant="outlined" color="primary" startIcon={<DeleteIcon />}/>
 
       </div>
