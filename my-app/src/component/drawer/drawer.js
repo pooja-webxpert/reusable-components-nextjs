@@ -204,7 +204,7 @@ export default function MiniDrawer({ children }) {
         <CssBaseline />
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
-          <AppBar position="fixed" open={open}>
+          <AppBar position="fixed" open={open} className="app-bar-outer">
             <Toolbar>
               <div className="flex justify-between items-center ">
                 <IconButton
@@ -225,11 +225,12 @@ export default function MiniDrawer({ children }) {
                   component="div"
                   sx={{ color: themeMode === "light" ? "black" : "white" }}
                 >
-                  <div className="flex justify-center  w-24">
+                  <div className="flex justify-center ">
                     <img
-                      src="/adminlogo.png"
+                   
+                      src="/aceWebx-Logo.png"
                       alt="Logo"
-                      className=" drop-shadow-lg"
+                      className="drop-shadow-lg main-logo"
                     />
                   </div>
                 </Typography>

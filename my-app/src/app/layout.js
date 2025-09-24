@@ -16,16 +16,15 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-
   return (
     <html lang="en">
       <body>
         <AuthProvider>
           <SearchAppBar />
-        <Container sx={{ maxWidth:'1420px'  }} maxWidth={false}>
-          {children}
-          <ToastContainer />
-        </Container>
+          <Container sx={{ maxWidth: "1420px" }} maxWidth={false}>
+            {children}
+            <ToastContainer />
+          </Container>
         </AuthProvider>
       </body>
     </html>
