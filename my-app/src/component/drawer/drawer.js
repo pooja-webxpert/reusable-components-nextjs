@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -19,14 +19,13 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import Link from "next/link";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { ThemeProvider } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Button, ThemeProvider } from "@mui/material";
 import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SearchModal from "../searchModal/searchModal";
 import ModeNightRoundedIcon from "@mui/icons-material/ModeNightRounded";
 import { darkTheme, lightTheme, menuItems } from "../globalfile";
-import SearchAppBar from "../navbar/navbar";
+import { signOut } from "next-auth/react";
 
 // Drawer width for the sidebar
 const drawerWidth = 240;
@@ -92,6 +91,13 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+/**
+ * MiniDrawer Component
+ *
+ * This component renders a responsive sidebar drawer with collapsible menu items,
+ * theme toggle (light/dark), search modal, and sign-out functionality.
+ * It uses MUI (Material-UI) for styling and Next.js Link for navigation.
+ */
 export default function MiniDrawer({ children }) {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -100,15 +106,21 @@ export default function MiniDrawer({ children }) {
   const [openItems, setOpenItems] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [themeMode, setThemeMode] = useState("light");
-
-  // Load theme preference from localStorage
+  const [toggle, setToggle] = useState(false);
+  // Load theme preference from localStorage on mount
   useEffect(() => {
     const storedTheme = localStorage.getItem("themeMode");
     if (storedTheme) {
       setThemeMode(storedTheme);
     }
   }, []);
-
+  // Example function to toggle state
+  const handleToggle = () => {
+    // Check if toggle is not undefined
+    if (typeof toggle !== "undefined") {
+      setToggle(!toggle);
+    }
+  };
   // Toggle theme
   const toggleTheme = () => {
     const newTheme = themeMode === "light" ? "dark" : "light";
@@ -140,7 +152,6 @@ export default function MiniDrawer({ children }) {
       subIndex !== undefined ? subIndex : null
     );
   };
-
   // Get stored data from localStorage on mount
   useEffect(() => {
     const storedSelectedIndex = localStorage.getItem("selectedIndex");
@@ -188,6 +199,7 @@ export default function MiniDrawer({ children }) {
 
   return (
     <>
+      <button onClick={handleToggle}></button>
       <ThemeProvider theme={themeMode === "light" ? lightTheme : darkTheme}>
         <CssBaseline />
         <Box sx={{ display: "flex" }}>
@@ -205,7 +217,7 @@ export default function MiniDrawer({ children }) {
                     color: "#757575",
                   }}
                 >
-                  {open ? <ChevronLeftIcon /> : <MenuIcon />}
+                  {open ? <ChevronRightIcon /> : <MenuIcon />}
                 </IconButton>
                 <Typography
                   variant="h5"
@@ -217,16 +229,23 @@ export default function MiniDrawer({ children }) {
                 </Typography>
               </div>
               <div className="flex justify-center items-center">
-                <IconButton onClick={handleSearch}>
-                  <SearchTwoToneIcon />
-                </IconButton>
-                <IconButton onClick={toggleTheme} color="inherit">
-                  {themeMode === "light" ? (
-                    <ModeNightRoundedIcon />
-                  ) : (
-                    <LightModeIcon />
-                  )}
-                </IconButton>
+                <div className="flex justify-center items-center">
+                  <IconButton onClick={handleSearch}>
+                    <SearchTwoToneIcon />
+                  </IconButton>
+                  <IconButton onClick={toggleTheme} color="inherit">
+                    {themeMode === "light" ? (
+                      <ModeNightRoundedIcon />
+                    ) : (
+                      <LightModeIcon />
+                    )}
+                  </IconButton>
+                </div>
+                <div>
+                  <Button className="w-full" onClick={() => signOut()}>
+                    Sign Out
+                  </Button>
+                </div>
               </div>
             </Toolbar>
           </AppBar>
@@ -289,7 +308,7 @@ export default function MiniDrawer({ children }) {
                                 (openItems.includes(index) ? (
                                   <ExpandMore />
                                 ) : (
-                                  <ChevronLeftIcon />
+                                  <ChevronRightIcon />
                                 ))}
                             </ListItemButton>
                           </ListItem>
@@ -346,7 +365,7 @@ export default function MiniDrawer({ children }) {
                             (openItems.includes(index) ? (
                               <ExpandMore />
                             ) : (
-                              <ChevronLeftIcon />
+                              <ChevronRightIcon />
                             ))}
                         </ListItemButton>
                       </ListItem>
@@ -415,6 +434,7 @@ export default function MiniDrawer({ children }) {
               bgcolor: themeMode === "light" ? "#f4f6f8" : "#121212",
               flexGrow: 1,
               p: 3,
+              marginTop: 5,
             }}
           >
             {children}

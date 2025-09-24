@@ -1,5 +1,5 @@
 "use client";
-import { TextFieldCodeFull, textFieldCodeFull, TextFieldCodeHalf, textFieldCodeHalf } from "@/component/globalfile";
+import { TextFieldCodeFull, TextFieldCodeHalf } from "@/component/globalfile";
 import MultiLineInputPage from "@/component/multiLineInput/multiLineInput";
 import TextInputField from "@/component/shared/form/textField";
 import { Button, IconButton, Tooltip, Typography } from "@mui/material";
@@ -11,11 +11,13 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 
 const TextFieldPage = () => {
+    // Initialize react-hook-form for managing form state
   const { control } = useForm();
+    // State for expanding/collapsing code preview
   const [toggle, setToggle] = useState(false);
 
 
-  // code copy
+  /** Copy code snippet to clipboard */
   const handleCopyContent = () => {
     {
       toggle ? (
@@ -25,7 +27,7 @@ const TextFieldPage = () => {
       )
     }
   }
-  // hide and show button
+  /** Toggle expand/collapse for code section */
   const handleToggleButton = () => {
     setToggle(!toggle);
   };

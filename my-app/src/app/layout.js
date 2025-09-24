@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MiniDrawer from "@/component/drawer/drawer";
 import { Container } from "@mui/material";
+import { AuthProvider } from "@/context/authprovider";
 // import Provider from "@/component/Provider";
 
 export const metadata = {
@@ -15,11 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <AuthProvider>
           <SearchAppBar />
         <Container sx={{ maxWidth:'1420px'  }} maxWidth={false}>
           {children}
           <ToastContainer />
         </Container>
+        </AuthProvider>
       </body>
     </html>
   );

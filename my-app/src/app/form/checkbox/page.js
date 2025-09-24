@@ -2,7 +2,6 @@
 import {
   CheckBoxCodeFull,
   CheckBoxCodeHalf,
-  Lists,
 } from "@/component/globalfile";
 import { Button, IconButton, Tooltip, Typography } from "@mui/material";
 import React, { useState } from "react";
@@ -13,6 +12,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckBoxGroup from "@/component/shared/form/checkbox";
 
 const CheckBoxPage = () => {
+    // Initialize react-hook-form
   const { control, handleSubmit } = useForm({
     defaultValues: {
       option: [],
@@ -22,11 +22,11 @@ const CheckBoxPage = () => {
   const [toggle, setToggle] = useState(false);
   const [formData, SetFormData] = useState();
 
-  // toggle for show and hide code
+  // Toggle button handler
   const handleToggleButton = () => {
     setToggle(!toggle);
   };
-
+  // Checkbox options
   const CheckBoxOptions = [
     { label: "CheckBox1", value: "CheckBox1" },
     { label: "CheckBox2", value: "CheckBox2" },
@@ -34,7 +34,7 @@ const CheckBoxPage = () => {
     { label: "CheckBox4", value: "CheckBox4" },
     { label: "CheckBox5", value: "CheckBox5" },
   ];
-  // copy code
+  // Copy code block (full or half) depending on toggle state
   const handleCopyContent = () => {
     {
       toggle
@@ -42,7 +42,7 @@ const CheckBoxPage = () => {
         : navigator.clipboard.writeText(CheckBoxCodeHalf);
     }
   };
-
+  // Form submit handler
   const formSubmit = (data) => {
     SetFormData(data);
   };

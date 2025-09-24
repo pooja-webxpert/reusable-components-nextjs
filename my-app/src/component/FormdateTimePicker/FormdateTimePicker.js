@@ -8,11 +8,24 @@ import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { DateTimePickerCodeFull, DateTimePickerCodeHalf } from "../globalfile";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
+/**
+ * DateTimePicker Component
+ * 
+ * This component renders a date-time picker form using React Hook Form and a custom
+ * FormDateTimePicker component. Users can select a date and time. The component also
+ * shows the code implementation (full or partial) which can be expanded/collapsed 
+ * and copied to the clipboard.
+ */
 const DateTimePicker = () => {
   const { control } = useForm();
+    // State to toggle showing full or partial code snippet
   const [toggle, setToggle] = useState(false);
 
-  // copy code
+  /**
+   * Copies the currently displayed code snippet to the clipboard
+   * - Full code if toggle is true
+   * - Partial code if toggle is false
+   */
   const handleCopyContent = () => {
     {
       toggle ? (
@@ -23,7 +36,9 @@ const DateTimePicker = () => {
     }
   }
 
-// toggle for show and hide code 
+  /**
+   * Toggles between showing full or partial code snippet
+   */
   const handleToggleButton = () => {
     setToggle(!toggle);
   };
