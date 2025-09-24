@@ -62,13 +62,13 @@ export default function LoginPage() {
       <div className="min-h-screen flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           {/* Logo */}
-          {/* <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-8">
             <img
-              src="/acewebxlogo.png"
+              src="/aceWebx-Logo.png"
               alt="Logo"
               className=" w-60 drop-shadow-lg"
             />
-          </div> */}
+          </div>
 
           {/* Login Card */}
           <Card className="rounded-2xl bg-white/80 backdrop-blur-xl border border-white/30 shadow-2xl">

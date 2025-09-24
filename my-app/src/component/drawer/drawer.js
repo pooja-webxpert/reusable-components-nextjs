@@ -225,7 +225,13 @@ export default function MiniDrawer({ children }) {
                   component="div"
                   sx={{ color: themeMode === "light" ? "black" : "white" }}
                 >
-                  LOGO
+                  <div className="flex justify-center  w-24">
+                    <img
+                      src="/adminlogo.png"
+                      alt="Logo"
+                      className=" drop-shadow-lg"
+                    />
+                  </div>
                 </Typography>
               </div>
               <div className="flex justify-center items-center">
