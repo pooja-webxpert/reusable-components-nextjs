@@ -24,7 +24,7 @@ import BasicSkeleton from "@/component/shared/form/skeleton";
 const SkeletonPage = () => {
   const [toggle, setToggle] = useState(false);
 
-  // copy code
+  /** Copy code block for the first example */
   const handleCopyContent = () => {
     {
       toggle
@@ -32,7 +32,7 @@ const SkeletonPage = () => {
         : navigator.clipboard.writeText(SkeletonCodeHalf);
     }
   };
-  // code copy for 2nd skeleton
+  /** Copy code block for the second example */
   const handleCopyContent2 = () => {
     {
       toggle
@@ -40,7 +40,7 @@ const SkeletonPage = () => {
         : navigator.clipboard.writeText(SkeletonCodeHalf2);
     }
   };
-  // toggle for show and hide code
+  /** Toggle expand/collapse */
   const handleToggleButton = () => {
     setToggle(!toggle);
   };
@@ -48,7 +48,7 @@ const SkeletonPage = () => {
   return (
     <>
       <Typography variant="h4">Skeleton</Typography>
-      <hr/>
+      <hr />
       <Typography className="!mt-3">
         Display a placeholder preview of your content before the data gets
         loaded to reduce load-time frustration.

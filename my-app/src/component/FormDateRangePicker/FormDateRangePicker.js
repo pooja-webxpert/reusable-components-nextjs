@@ -11,7 +11,16 @@ import {
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FormDateRangePicker from "../shared/form/dateRangePicker";
 
+/**
+ * DateRangePicker Component
+ *
+ * This component renders a Date Range Picker form using React Hook Form and a custom
+ * FormDateRangePicker component. Users can select a start and end date, submit the form,
+ * and view the selected date range. Additionally, the component displays example code
+ * (either full or half version) that can be expanded/collapsed and copied to the clipboard.
+ */
 const DateRangePicker = () => {
+  // Initialize form control using react-hook-form
   const { control, handleSubmit } = useForm({
     defaultValues: {
       dateRange: {
@@ -24,7 +33,7 @@ const DateRangePicker = () => {
   const [toggle, setToggle] = useState(false);
   const [formData, setFormData] = useState();
 
-  // copy code
+  // Function to copy the currently displayed code snippet to clipboard
   const handleCopyContent = () => {
     {
       toggle
@@ -33,11 +42,11 @@ const DateRangePicker = () => {
     }
   };
 
-  // toggle for show and hide code
+  // Function to toggle showing full/half code snippet
   const handleToggleButton = () => {
     setToggle(!toggle);
   };
-
+  // Function to handle form submission and store the selected date range
   const formSubmit = (data) => {
     setFormData(data.dateRange);
   };
@@ -63,11 +72,13 @@ const DateRangePicker = () => {
       </form>
       {formData ? (
         <div className="mt-10">
-          <Typography variant="h6">
-          Selected Data :
-          </Typography>
-          <pre>{JSON.stringify(formData.startDate?.format("DD-MM-YYYY"), null, 2)}</pre>
-          <pre>{JSON.stringify(formData.endDate?.format("DD-MM-YYYY"), null, 2)}</pre>
+          <Typography variant="h6">Selected Data :</Typography>
+          <pre>
+            {JSON.stringify(formData.startDate?.format("DD-MM-YYYY"), null, 2)}
+          </pre>
+          <pre>
+            {JSON.stringify(formData.endDate?.format("DD-MM-YYYY"), null, 2)}
+          </pre>
         </div>
       ) : (
         ""

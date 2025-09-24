@@ -1,17 +1,8 @@
 "use client";
-import { Card, Container, Typography } from "@mui/material";
-import TextFieldPage from "./form/textField/page";
-import DatePicker from "./form/datePicker/page";
-import DateRangePicker from "@/component/FormDateRangePicker/FormDateRangePicker";
-import FormDateRangePicker from "@/component/shared/form/dateRangePicker";
-import { useForm } from "react-hook-form";
-import FormDatePicker from "@/component/shared/form/datePicker";
-import FormInput from "@/component/shared/form/formData";
-import FormInputSelect from "@/component/shared/form/FormInputSelect";
-import { Lists } from "@/component/globalfile";
+import { Card, Typography } from "@mui/material";
+
 
 export default function Home() {
-  const { control } = useForm();
   return (
     <>
         <div className="!m-10 flex gap-10 justify-between !items-center">

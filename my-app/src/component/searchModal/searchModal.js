@@ -14,7 +14,7 @@ import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
 import { useRouter } from "next/navigation";
 import { DummyData } from "../globalfile";
 
-const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
+const SearchModal = ({ modalOpen, handleClose, onSearchSelect }) => {
   const { control, watch, handleSubmit } = useForm();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -37,6 +37,7 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
     px: 4,
     pb: 4,
   };
+  // Effect to filter search results whenever the search text changes
 
   useEffect(() => {
     if (searchText) {
@@ -51,7 +52,7 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
     }
     // handleClose()
   }, [searchText]);
-
+  // Function to highlight matched text in search results
   const highlightText = (text, highlight) => {
     if (!highlight) return text;
 
@@ -66,20 +67,22 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
       )
     );
   };
-
+  // Handle selecting a search result
   const handleSelect = (item) => {
     if (item.href) {
+      // If item has a link, call the callback and navigate
       onSearchSelect(item.parentIndex, item.subIndex);
   
       router.push(item.href);
     } else if (item.parentIndex !== undefined) {
+       // If item has indices but no link, just call callback
       onSearchSelect(item.parentIndex, item.subIndex);
     }
 
     handleClose(); 
   };
   
-
+  // Keyboard navigation for search results
   const handleKeyDown = useCallback(
     (event) => {
       if (filteredData.length === 0) return;
@@ -100,7 +103,7 @@ const SearchModal = ({ modalOpen, handleClose, onSearchSelect, reset }) => {
   );
   
   
-
+  // Handle form submission
   const onSubmit = (data) => {
     if (data.search) {
       const selectedItem = DummyData.find((item) =>

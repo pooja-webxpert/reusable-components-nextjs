@@ -10,9 +10,10 @@ import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const TypographyPage = () => {
+  // State for expand/collapse code
   const [toggle, setToggle] = useState(false);
 
-  // copy code
+  // Copy code snippet to clipboard (full or half depending on toggle state)
   const handleCopyContent = () => {
     {
       toggle
@@ -21,7 +22,7 @@ const TypographyPage = () => {
     }
   };
 
-  // toggle for show and hide code
+  // Toggle expand/collapse for code block
   const handleToggleButton = () => {
     setToggle(!toggle);
   };

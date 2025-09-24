@@ -1,35 +1,19 @@
 "use client";
-import {
-  ButtonCodeFull,
-  ButtonCodeHalf,
-  Lists,
-  ModalCodeFull,
-  ModalCodeHalf,
-  SelectInputCodeFull,
-  SelectInputCodeHalf,
-} from "@/component/globalfile";
-import FormInputSelect from "@/component/shared/form/FormInputSelect";
-import UploadFiles from "@/component/shared/form/uploadFiles";
+import { ButtonCodeFull, ButtonCodeHalf } from "@/component/globalfile";
 import { Button, IconButton, Tooltip, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { solarizedDark } from "react-code-blocks";
 import { useForm } from "react-hook-form";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import BasicButton from "@/component/shared/form/button";
-import DeleteIcon from '@mui/icons-material/Delete';
-import { ButtonGroup } from "@mui/joy";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ButtonPage = () => {
   const { control } = useForm();
   const [toggle, setToggle] = useState(false);
-  const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  // copy code
+ // Copy code snippet depending on toggle state (full or half)
   const handleCopyContent = () => {
     {
       toggle
@@ -38,28 +22,16 @@ const ButtonPage = () => {
     }
   };
 
-  // toggle for show and hide code
+  // Toggle expand/collapse for code section
   const handleToggleButton = () => {
     setToggle(!toggle);
-  };
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
   };
 
   return (
     <>
       <Typography variant="h4">Button</Typography>
-      <hr/>
-       <Typography className="!mt-3">
+      <hr />
+      <Typography className="!mt-3">
         Buttons allow users to take actions, and make choices, with a single
         tap.
       </Typography>
@@ -69,13 +41,36 @@ const ButtonPage = () => {
       </Typography>
 
       <div className="flex gap-4 !mt-10">
-        <BasicButton control={control} name="button2"  label="Link" href="#"/>  
-        <BasicButton control={control} name="button6"  label="Secondary" color="secondary"/>
-        <BasicButton control={control} name="button3"  label="Dark" color="dark" variant="contained"/>
-        <BasicButton control={control} name="button4"  label="Error" variant="outlined" color="error" />
+        <BasicButton control={control} name="button2" label="Link" href="#" />
+        <BasicButton
+          control={control}
+          name="button6"
+          label="Secondary"
+          color="secondary"
+        />
+        <BasicButton
+          control={control}
+          name="button3"
+          label="Dark"
+          color="dark"
+          variant="contained"
+        />
+        <BasicButton
+          control={control}
+          name="button4"
+          label="Error"
+          variant="outlined"
+          color="error"
+        />
         {/* <BasicButton className="!w-28" control={control} name="button5"  label="Success" variant="contained" color="success"/> */}
-        <BasicButton control={control} name="button7"  label="Delete" variant="outlined" color="primary" startIcon={<DeleteIcon />}/>
-
+        <BasicButton
+          control={control}
+          name="button7"
+          label="Delete"
+          variant="outlined"
+          color="primary"
+          startIcon={<DeleteIcon />}
+        />
       </div>
       <div className="flex justify-end items-center mt-5">
         <Button onClick={handleToggleButton}>

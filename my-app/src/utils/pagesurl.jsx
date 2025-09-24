@@ -13,4 +13,5 @@ export const routesUrl = {
   Skeleton:'/form/skeleton',
 Button:"/form/others/button",
 Typography:"/form/others/typography",
+Login:'/login'
 };

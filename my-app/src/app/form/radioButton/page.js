@@ -9,29 +9,30 @@ import { useForm } from "react-hook-form";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import RadioButton from "@/component/shared/form/radioButton";
 import RadioButtonGroup from "@/component/shared/form/radioButton";
 
 const RadioButtonPage = () => {
+  // Initialize react-hook-form with default values
   const { control } = useForm({
     defaultValues: {
       radioGroup: "One", // Initial value for the radio group
     },
   });
+  // Radio button options
   const radioOptions = [
     { label: "Male", value: "Male" },
     { label: "Female", value: "Female" },
     { label: "Others", value: "Others" },
   ];
-
+  // State for toggling code visibility
   const [toggle, setToggle] = useState(false);
 
-  // toggle for show and hide code
+  // Handler for toggling code expand/collapse
   const handleToggleButton = () => {
     setToggle(!toggle);
   };
 
-  // copy code
+  // Handler for copying code to clipboard
   const handleCopyContent = () => {
     {
       toggle

@@ -1,25 +1,22 @@
 "use client";
-import {
-  ModalCodeFull,
-  ModalCodeHalf,
-} from "@/component/globalfile";
+import { ModalCodeFull, ModalCodeHalf } from "@/component/globalfile";
 import { Button, IconButton, Tooltip, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import BasicModal from "@/component/shared/form/modal";
 
 const ModalPage = () => {
-  const { control } = useForm();
+  // State for expanding/collapsing code snippet
   const [toggle, setToggle] = useState(false);
+  // State for controlling modal open/close
   const [open, setOpen] = useState(false);
-
+  // Handlers for modal state
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // copy code
+  // Copy code snippet to clipboard
   const handleCopyContent = () => {
     {
       toggle
@@ -28,11 +25,11 @@ const ModalPage = () => {
     }
   };
 
-  // toggle for show and hide code
+  // Toggle between expanded and collapsed code
   const handleToggleButton = () => {
     setToggle(!toggle);
   };
-
+  // Custom modal style (positioning and design)
   const style = {
     position: "absolute",
     top: "50%",
@@ -48,7 +45,7 @@ const ModalPage = () => {
   return (
     <>
       <Typography variant="h4">Modal</Typography>
-      <hr/>
+      <hr />
       <Typography className="!mt-3">
         The modal component provides a solid foundation for creating dialogs,
         popovers, lightboxes, or whatever else.
