@@ -173,8 +173,12 @@ main.MuiBox-root.css-7ybbiq {
 
 }
 
-
-
+.main-logo{
+  max-width:150px;
+}
+.app-bar-outer{
+  padding: 8px 0;
+}
 
 
 
