@@ -19,11 +19,13 @@ export default async function AdminLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Container >
+        {/* <Container > */}
           <MiniDrawer>
-            {children}
+        <div className="p-5">
+        {children}
+        </div>
             </MiniDrawer>
-        </Container>
+        {/* </Container> */}
       </body>
     </html>
   );

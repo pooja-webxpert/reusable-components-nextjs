@@ -70,7 +70,7 @@ export default function SearchAppBar() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
+          <AppBar position="static" className="bg-[#000000c9]">
             <Toolbar sx={{ justifyContent: "space-between" }}>
               <Container
                 sx={{ maxWidth: "1420px" }}
@@ -121,10 +121,12 @@ export default function SearchAppBar() {
                     onClick={toggleTheme}
                     color="inherit"
                   >
-                    {themeMode === "light" ? (
-                      <ModeNightRoundedIcon />
+                    {themeMode === "dark" ? (
+                      <></>
+                      // <ModeNightRoundedIcon />
                     ) : (
-                      <LightModeIcon />
+                      <></>
+                      // <LightModeIcon />
                     )}
                   </IconButton>
                 </Box>

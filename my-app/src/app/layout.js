@@ -21,10 +21,10 @@ export default async function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <SearchAppBar />
-          <Container sx={{ maxWidth: "1420px" }} maxWidth={false}>
+          {/* <Container sx={{ maxWidth: "1420px" }} maxWidth={false}> */}
             {children}
             <ToastContainer />
-          </Container>
+          {/* </Container> */}
         </AuthProvider>
       </body>
     </html>

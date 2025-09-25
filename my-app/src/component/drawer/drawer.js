@@ -225,12 +225,11 @@ export default function MiniDrawer({ children }) {
                   component="div"
                   sx={{ color: themeMode === "light" ? "black" : "white" }}
                 >
-                  <div className="flex justify-center ">
+                  <div className=" flex justify-center ">
                     <img
-                   
                       src="/aceWebx-Logo.png"
                       alt="Logo"
-                      className="drop-shadow-lg main-logo"
+                      className=" drop-shadow-lg main-logo"
                     />
                   </div>
                 </Typography>
@@ -240,15 +239,6 @@ export default function MiniDrawer({ children }) {
                   <IconButton onClick={handleSearch}>
                     <SearchTwoToneIcon />
                   </IconButton>
-                  <IconButton onClick={toggleTheme} color="inherit">
-                    {themeMode === "light" ? (
-                      <ModeNightRoundedIcon />
-                    ) : (
-                      <LightModeIcon />
-                    )}
-                  </IconButton>
-                </div>
-                <div>
                   <Button className="w-full" onClick={() => signOut()}>
                     Sign Out
                   </Button>
@@ -259,7 +249,7 @@ export default function MiniDrawer({ children }) {
           <Drawer variant="permanent" open={open}>
             <DrawerHeader />
             <Divider />
-            <List>
+            <List className="mt-3">
               {menuItems.map((item, index) => (
                 <div key={index}>
                   {item.route ? (
